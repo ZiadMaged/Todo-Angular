@@ -1,0 +1,43 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <input
+        type="hidden"
+        name="noteId"
+        [value] = "note.id"
+    >
+    <div class="form-group">
+        <label>Title</label>
+        <input
+            class="
+            form-control form-control-lg"
+            placeholder="title"
+            name="titleName"
+            #titleName="ngModel"
+            [(ngModel)]="note.title"
+            required
+            maxlength="50"
+            [class.invalid]="titleName.invalid && titleName.touched"
+        >
+        <div *ngIf="titleName.touched">
+            <!-- <p *ngIf="titleName.errors['required'] ">Title is required!</p> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Body</label>
+        <input
+            class="form-control form-control-lg"
+            placeholder="Body"
+            name="bodyName"
+            #bodyName="ngModel"
+            [(ngModel)]="note.body"
+            required
+            maxlength="150"
+            [class.invalid]="bodyName.invalid && bodyName.touched"
+        >
+        <div *ngIf="bodyName.touched">
+            <!-- <p *ngIf="bodyName.errors['required']">Body is required!</p> -->
+        </div>
+    </div>   
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+</form>

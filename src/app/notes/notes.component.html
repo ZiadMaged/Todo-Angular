@@ -1,0 +1,36 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Todo Item Register</h1>
+</div>
+
+<div class="table">
+    <div class="row">
+        <div class="col-md-6">
+            <app-note-form (noteEvent) = "refreshNotes()"></app-note-form>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Note ID</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let note of notes">
+                        <td>{{ note.id }}</td>
+                        <td>{{ note.title }}</td>
+                        <td>{{ note.body }}</td>
+                        <td>
+                            <button (click)="onDelete(note.id)"> Delete </button>
+                        </td>
+                        <td>
+                            <a routerLink="/notes/{{note.id}}"> Edit </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
